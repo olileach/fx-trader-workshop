@@ -610,7 +610,7 @@ Resources:
     Properties:
       Role: !Ref FxTraderGlueIamRole
       Name: "fx-trader-example"
-      GlueVersion: 4.0
+      GlueVersion: 3.0
       NumberOfWorkers: 2
       WorkerType: G.1X
       Command: 
@@ -618,9 +618,4 @@ Resources:
         ScriptLocation: !Sub "s3://${FxTraderS3Bucket}/fx-trader-example/scripts/fx-trader-example.py"
       Description: "FX Trader AWS Glue Job workshop demo."
       DefaultArguments:
-        "--enable-metrics": ""
         "--TempDir" : !Sub "s3://${FxTraderS3Bucket}/fx-trader-example/temp/"
-        "--enable-spark-ui": ""
-        "--spark-event-logs-path" : !Sub "s3://${FxTraderS3Bucket}/fx-trader-example/ui/"
-        "--enable-s3-parquet-optimized-committer" : ""
-        "--enable-auto-scaling" : ""
