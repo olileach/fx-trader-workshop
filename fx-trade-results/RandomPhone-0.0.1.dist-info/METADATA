@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: RandomPhone
+Version: 0.0.1
+Summary: A module to generate random phone numbers
+Home-page: https://github.com/rfranks-securenet/RandomPhone
+Author: Richard Franks
+Author-email: richard.franks@securenetcoms.co.uk
+License: LICENSE
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Natural Language :: English
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+Provides-Extra: testing
+Requires-Dist: pytest ; extra == 'testing'
+
+# RandomPhone
+
+![Build Status](https://api.travis-ci.com/rfranks-securenet/RandomPhone.svg?branch=main)
+
+## Overview
+
+RandomPhone is a package for generating random phone numbers.
+It currently supports UK phone numbers pulled from the
+[Ofcom telephone numbers for use in TV and radio drama](https://www.ofcom.org.uk/phones-telecoms-and-internet/information-for-industry/numbering/numbers-for-drama)
+
+## Install
+
+Easy way:
+
+`pip install RandomPhone`
+
+## Usage
+
+RandomPhone can create landlines, mobiles, freephone, premium, and local rate numbers.
+
+```
+from random_phone import RandomUkPhone
+
+rukp = RandomUkPhone()
+
+rukp.random_landline()
+rukp.random_mobile()
+rukp.random_freephone()
+rukp.random_premium()
+rukp.random_ukwide()
+
+```
+
+An optional parameter `international` can be passed to place the international dialing prefix on the front (+44)
+
