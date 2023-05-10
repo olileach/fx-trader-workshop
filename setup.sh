@@ -1,14 +1,16 @@
 #!/bin/sh
 
 clear
+region=$(curl -s http://169.254.169.254/latest/meta-data/placement/region) 
 aws lambda update-function-code \
 --function-name fx-trade-results \
 --zip-file fileb:///home/ec2-user/environment/fx-trader-workshop/fx-trade-results.zip \
---output text
+--output text \
+--region $region
 account_id=$(aws sts get-caller-identity --query Account --output text)
 region_name=$(aws configure get region)
-sed -i "s/{account_id}/$account_id/g" fx-trader-example.py
-sed -i "s/{region_name}/$region_name/g" fx-trader-example.py
+sed -i "s/{account_id}/$account_id/g" ./fx-trader-workshop/fx-trader-example.py
+sed -i "s/{region_name}/$region_name/g" ./fx-trader-workshop/fx-trader-example.py
 aws s3 cp /home/ec2-user/environment/fx-trader-workshop/fx-trader-example.py \
 s3://fx-trader-${account_id}-${region_name}-bucket/fx-trader-example/scripts/fx-trader-example.py
 sudo yum remove python36 -y
