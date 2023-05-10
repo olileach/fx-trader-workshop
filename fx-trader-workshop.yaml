@@ -23,6 +23,7 @@ Mappings:
     eu-west-2: {Domain: eu-west-1.compute.internal}
     us-east-1: {Domain: ec2.internal}
     us-east-2: {Domain: us-east-2.compute.internal}
+    us-west-1: {Domain: us-west-1.compute.internal}
     us-west-2: {Domain: us-west-2.compute.internal}
     eu-central-1: {Domain: eu-central-1.compute.internal}
 Outputs:
@@ -619,3 +620,14 @@ Resources:
       Description: "FX Trader AWS Glue Job workshop demo."
       DefaultArguments:
         "--TempDir" : !Sub "s3://${FxTraderS3Bucket}/fx-trader-example/temp/"
+
+  FxTraderAthenaWorkgroup:
+    Type: AWS::Athena::WorkGroup
+    Properties: 
+      Description: "Fx Trader Athena workgroup"
+      Name: fx-trader-workgroup
+      RecursiveDeleteOption: true
+      State: ENABLED
+      WorkGroupConfiguration:
+        ResultConfiguration:
+          OutputLocation: "s3://${FxTraderS3Bucket}/Athena"
