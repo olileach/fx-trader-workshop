@@ -4,13 +4,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project demos a FX trader flow app where trade execution data is placed on to a kinesis data stream, ingested using AWS Glue Structured Streaming and copied to S3 in Parquet format using a Glue Job and Glue Data Catalogue. This data is made avaiable in Amazon Athena via an external AWS Glue table.
+This project demos a FX trader example app where trade execution data is placed on to a kinesis data stream, ingested using AWS Glue Structured Streaming and copied to S3 in Parquet format using a Glue Job and Glue Data Catalogue. This data is made avaiable in Amazon Athena via an external AWS Glue table.
 
 The project is deployed using Cloudformation with 2 exclusions:
 
-1. AWS Glue job is not configured. This is done as part of the FX Trader Workshop
+1. An example AWS Glue job is configured, however, it would be great to create your own glue job to build your own ETL. There are instructions to do this included in the the FX Trader Workshop
 
-2. Quicksight is not configured. This is done as part of the FX Trader Workshop
+2. Quicksight is not configured so participants need to configure this themselves, which is a great learning opportunity. This is done as part of the FX Trader Workshop
 
 
 ## High Level Architecture
