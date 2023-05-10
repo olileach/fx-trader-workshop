@@ -8,11 +8,9 @@ aws lambda update-function-code \
 --output text \
 --region $region
 account_id=$(aws sts get-caller-identity --query Account --output text)
-region_name=$(aws configure get region)
 sed -i "s/{account_id}/$account_id/g" ./fx-trader-workshop/fx-trader-example.py
-sed -i "s/{region_name}/$region_name/g" ./fx-trader-workshop/fx-trader-example.py
-aws s3 cp /home/ec2-user/environment/fx-trader-workshop/fx-trader-example.py \
-s3://fx-trader-${account_id}-${region_name}-bucket/fx-trader-example/scripts/fx-trader-example.py
+sed -i "s/{region_name}/$region/g" ./fx-trader-workshop/fx-trader-example.py
+aws s3 cp /home/ec2-user/environment/fx-trader-workshop/fx-trader-example.py s3://fx-trader-${account_id}-${region}-bucket/fx-trader-example/scripts/fx-trader-example.py
 sudo yum remove python36 -y
 sudo yum install python38 python38-pip -y
 sudo python3 -m pip install boto3
